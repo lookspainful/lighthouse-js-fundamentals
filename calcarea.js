@@ -15,7 +15,7 @@ function calculateTriangleArea(base, height){
   return answer;
 }
 function calculateCircleArea(radius){
-  let answer = (Math.PI) * (radius ** 2);
+  let answer = Math.PI * radius ** 2;
   if (radius <= 0)
   {
     return;
