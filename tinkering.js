@@ -1,9 +1,8 @@
-const vacationDays = 2 + 3;
+const talkingCalendar = function(date) {
+  const humanDate = new Date(date);
+  return humanDate;
+};
 
-if (vacationDays <= 5) {
-  console.log("Not enough for a long vacation.");
-} else if (vacationDays === 5) {
-  console.log("We can take a whole week off, not bad.");
-} else {
-  console.log("We're gonna have a great time!");
-}
+console.log(talkingCalendar("2017/12/02"));
+console.log(talkingCalendar("2007/11/11"));
+console.log(talkingCalendar("1987/08/24"));
