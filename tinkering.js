@@ -1,8 +1,6 @@
-const talkingCalendar = function(date) {
-  const humanDate = new Date(date);
-  return humanDate;
-};
+let arr1 = ["shit", "fuck"];
+let arr2 = arr1;
 
-console.log(talkingCalendar("2017/12/02"));
-console.log(talkingCalendar("2007/11/11"));
-console.log(talkingCalendar("1987/08/24"));
+console.log(arr2);
+arr2.splice(0, 1, "oops");
+console.log(arr2);
