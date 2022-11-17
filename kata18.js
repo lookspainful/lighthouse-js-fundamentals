@@ -1,54 +1,47 @@
 const squareCode = function(message) {
-  //Get rid of the whitespace
-  //Found a really cool solution on stack overflow that goes into the + sign:
+  //Found this super cool code on stackoverflow for replacing whitespace
   //https://stackoverflow.com/questions/5964373/is-there-a-difference-between-s-g-and-s-g
   let chars = message.replace(/\s+/g, '');
-  //Square the length of the string to input then round it up
-  const sqr = Math.ceil(Math.sqrt(chars.length));
 
-  //Make an array using the squares
-  const arr1 = [];
-  const arr2 = [];
-  let counter = 0;
-  let spaces = [];
+  //Figuring out how many rows we'll make
+  const sqr = Math.ceil(Math.sqrt(chars.length));
+  const arrN = new Array(sqr);
+  const arrS = new Array(sqr);
   
-  //Store the message into arr1
-  let counter1 = 0;
+  //Create an empty array of the appropriate size
   for (let i = 0; i < sqr; i++){
+    arrS[i] = new Array(sqr);
+    arrN[i] = new Array(sqr);
+  }
+
+  let counter = 0;
+  //Store the message to scramble into the normal array
+  for (let i = 0; i < arrN.length; i++){
     let char = '';
     for (let j = 0; j < sqr; j++){
-      if (counter >= chars.length){
-        break;
+      if (chars[counter] !== undefined){
+        char += chars[counter];
+        counter++;
       }
-      char += chars[counter];
-      counter++;
     }
-    if (char !== ''){
-      arr1.push(char);
-      spaces.push(i);
-    }
-  }
-  //Scramble the message.
-  for(let i = 0; i < arr1.length; i++){
-    let char = '';
-    for (let j = 0; j < arr1.length; j++){
-      arr2.push(arr1[j][i]);
-    }
+    arrN.fill(char, i); 
   }
 
-  let output = arr2.toString();
+  //Scramble the message
+  for (let i = 0; i < sqr; i++){
+    for (let j = 0; j < sqr; j++){
+      if (arrN[i][j] !== undefined){
+        arrS[j][i] = arrN[i][j];
+      }
+    }
+    arrS[i].push(" ");
+  }
+  let output = arrS.toString();
   //Remove any commas that converting an array to a string include and put the spaces back in
-  for (let i = 0; i <= output.length; i++){
-    output = output.replace(',','');
+  for (let i = 0; i < arrS.toString().length; i++){
+    output = output.replace(',', '');
   }
-  for (let i = 0; i < output.length; i++){
-    for (let j = 0; j < spaces.length; j++){
-      if (i === spaces[j]){
-        output[i] = ' ';
-      }
-    }
-  }
-
+  
   return output;
 };
 

@@ -1,6 +1,5 @@
-let arr1 = ["shit", "fuck"];
-let arr2 = arr1;
-
-console.log(arr2);
-arr2.splice(0, 1, "oops");
-console.log(arr2);
+const array = [0, null, 1, "", 2, undefined, 2, , , , , 4, , 4, , 5, , 6, , , , [1,2,3,4, undefined, , , , ]];
+const arrFiltered = array[1].filter(el => {
+  return el != null && el != '';
+});
+console.log(arrFiltered);
